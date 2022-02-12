@@ -22,13 +22,13 @@ public class Player : MonoBehaviour {
 		Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 		if (moveDirection.sqrMagnitude > 1f)
 			moveDirection /= moveDirection.magnitude;
-		moveDirection.x *= horizontalSpeed * Time.deltaTime;
-		moveDirection.z *= verticalSpeed * Time.deltaTime;
+		moveDirection.x *= horizontalSpeed;
+		moveDirection.z *= verticalSpeed;
 		characterController.SimpleMove(moveDirection);
 		animatorController.SetFloat("Movespeed", moveDirection.sqrMagnitude);
 		if (moveDirection.sqrMagnitude > 0f) {
 			Quaternion forwardRot = Quaternion.LookRotation(moveDirection);
-			playerAvatar.rotation = Quaternion.RotateTowards(playerAvatar.rotation, forwardRot, rotateSpeed * Time.deltaTime);
+			playerAvatar.rotation = Quaternion.RotateTowards(playerAvatar.rotation, forwardRot, rotateSpeed * 60f * Time.deltaTime);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
