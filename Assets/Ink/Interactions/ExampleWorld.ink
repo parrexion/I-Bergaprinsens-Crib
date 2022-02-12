@@ -40,7 +40,7 @@ MM: See you around!
 -> END
 
 =mystery_man_sell
-MM: I got some pills for sale. I got {not Item_RedPill: a red one {not Item_BluePill: and}} {not Item_BluePill:a blue one}. You're interested?
+MM: I got some pills for sale. I got {not Item_RedPill: a red one{not Item_BluePill: and }}{not Item_BluePill:a blue one}. You're interested?
 * [Get red pill]
     PR: I like red things so I'll take the red one.
     MM: Pleasure doing business with you! #Item-get:RedPill
@@ -60,6 +60,12 @@ MM: Well goodbye then.
 
 
 = col_mustard
+VAR col_mustard_isfriend = false
+{col_mustard_isfriend : -> col_mustard_friend}
+{Item_RedPill : -> col_mustard_pill}
+-> col_mustard_regular
+
+= col_mustard_regular
 PR: Yo yo!
 YM: Hello there!
 YM: Haven't seen you around these parts lately. Where have you been?
@@ -67,8 +73,26 @@ PR: Ah, you know. Here and there. Always busy.
 YM: Can't say I do but good for you anyways, sonny.
 PR: Later, gramps!
  -> END
+ 
+= col_mustard_pill
+YM: I saw that you got yourself some pills. You're sharing them?
++ [Sure]
+    PR: Sure. Here take a red pill.
+    YM: Cheers mate! #Item-remove:RedPill
+    YM: Oh wow. That was some hot stuff.
+    ~ col_mustard_isfriend = true
+    PR: Oh yeah? Now I kinda regret not trying it myself.
++ [No]
+    PR: No, I did not get them just to hand them away!
+    YM: Tch, suit yourself then.
+- -> END
 
-
+= col_mustard_friend
+YM: Why hello there, friend! Out doing business?
+PR: You know how it is, always something that needs to be done.
+YM: Sounds good. I'll see you around.
+PR: Laters!
+-> END
 
 
 = building_sign
