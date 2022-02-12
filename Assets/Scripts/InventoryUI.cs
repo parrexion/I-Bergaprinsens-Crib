@@ -17,7 +17,6 @@ public class InventoryUI : MonoBehaviour {
 		Inventory.instance.onInventoryUpdated -= UpdateInventory;
 	}
 
-
 	private void UpdateInventory(List<ItemData> items) {
 		for (int i = 0; i < slots.Length; i++) {
 			if (i >= items.Count) {

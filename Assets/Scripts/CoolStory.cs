@@ -41,6 +41,11 @@ public class CoolStory {
 		currentStory = new Story(inkJSON.text);
 	}
 
+	public void ShowPickupItem(ItemData item) {
+		currentStory.variablesState["pickup"] = item.itemName;
+		currentStory.ChoosePathString($"{Area.system}.item_pickup");
+	}
+
 	public void SetPath(Area area, string path) {
 		currentStory.ChoosePathString($"{area}.{path}");
 	}
@@ -94,23 +99,23 @@ public class CoolStory {
 					Debug.LogError("Unknown item tag: " + tagSplit[0]);
 				}
 			}
-			else if (tagSplit[0].StartsWith("Flag")) {
-				if (tagSplit[0].EndsWith("set")) {
-					line.flagTags.Add(new FlagTag {
-						flag = tagSplit[0],
-						value = false
-					});
-				}
-				else if (tagSplit[0].EndsWith("clear")) {
-					line.flagTags.Add(new FlagTag {
-						flag = tagSplit[1],
-						value = false
-					});
-				}
-				else {
-					Debug.LogError("Unknown flag tag: " + tagSplit[0]);
-				}
-			}
+			//else if (tagSplit[0].StartsWith("Flag")) {
+			//	if (tagSplit[0].EndsWith("set")) {
+			//		line.flagTags.Add(new FlagTag {
+			//			flag = tagSplit[0],
+			//			value = false
+			//		});
+			//	}
+			//	else if (tagSplit[0].EndsWith("clear")) {
+			//		line.flagTags.Add(new FlagTag {
+			//			flag = tagSplit[1],
+			//			value = false
+			//		});
+			//	}
+			//	else {
+			//		Debug.LogError("Unknown flag tag: " + tagSplit[0]);
+			//	}
+			//}
 		}
 
 

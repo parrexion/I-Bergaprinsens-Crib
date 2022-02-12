@@ -1,50 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using UnityEngine.EventSystems;
 
 public class DialogueController : MonoBehaviour {
 
-	public static System.Action<Area, string> startDialogue;
-	public static System.Action choiceMade;
-	public static System.Action endDialogue;
+	public static DialogueController instance = null;
 	public static bool runningDialogue = false;
 
+	public System.Action startDialogue;
+	public System.Action endDialogue;
+	public System.Action choiceMade;
+	public System.Action<CharacterData, string> onUpdatedText;
+	public System.Action<CoolStory.ChoiceData> onUpdatedChoice;
+
 	public CharacterLibrary characterLibrary;
-	public GameObject dialogueView;
 	public TextAsset megaDialogue;
-
-	[Header("Left side")]
-	public GameObject leftView;
-	public Image portraitLeft;
-	public TextMeshProUGUI speakerNameLeft;
-	public TextMeshProUGUI dialogueTextLeft;
-
-	[Header("Right side")]
-	public GameObject rightView;
-	public Image portraitRight;
-	public TextMeshProUGUI speakerNameRight;
-	public TextMeshProUGUI dialogueTextRight;
-
-	[Header("Choice side")]
-	public GameObject choiceView;
-	public GameObject[] choices;
-	public TextMeshProUGUI[] choiceTexts;
 
 	private CoolStory story;
 	private bool waitingForChoice;
 
 
 	private void Awake() {
-		startDialogue += OnStartDialogue2;
-		story = new CoolStory(megaDialogue);
-		dialogueView.SetActive(false);
-	}
-
-	private void OnDestroy() {
-		startDialogue -= OnStartDialogue2;
+		if (instance == null) {
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+			story = new CoolStory(megaDialogue);
+		}
+		else {
+			Destroy(gameObject);
+		}
 	}
 
 	private void Update() {
@@ -55,19 +39,28 @@ public class DialogueController : MonoBehaviour {
 		}
 	}
 
-	public void MakeChoice(int index) {
-		story.MakeChoice(index);
-		ContinueDialogue();
-		StartCoroutine(DelayedChoice());
-	}
-
-	private void OnStartDialogue2(Area area, string path) {
+	public void StartDialogue(Area area, string path) {
 		if (runningDialogue)
 			return;
 
 		story.SetPath(area, path);
 		StartCoroutine(DelayedStart());
-		ShowUI();
+		startDialogue?.Invoke();
+	}
+
+	public void StartPickupItem(ItemData item) {
+		if (runningDialogue)
+			return;
+
+		story.ShowPickupItem(item);
+		StartCoroutine(DelayedStart());
+		startDialogue?.Invoke();
+	}
+
+	public void MakeChoice(int index) {
+		story.MakeChoice(index);
+		ContinueDialogue();
+		StartCoroutine(DelayedChoice());
 	}
 
 	private void ContinueDialogue() {
@@ -77,14 +70,14 @@ public class DialogueController : MonoBehaviour {
 		if (story.HasChoices) {
 			waitingForChoice = true;
 			CoolStory.ChoiceData choiceData = story.GetChoices();
-			DisplayChoices(choiceData);
+			onUpdatedChoice?.Invoke(choiceData);
 		}
 		else if (story.CanContinue) {
 			CoolStory.LineData data = story.GetNextText();
 			CharacterData speaker = (!string.IsNullOrEmpty(data.characterId)) ? characterLibrary.GetCharacter(data.characterId) : null;
-			DisplayLine(speaker, data.text);
+			onUpdatedText?.Invoke(speaker, data.text);
 			HandleItems(data);
-			HandleFlags(data);
+			//HandleFlags(data);
 		}
 		else {
 			FinishDialogue();
@@ -111,7 +104,6 @@ public class DialogueController : MonoBehaviour {
 	}
 
 	private void FinishDialogue() {
-		dialogueView.SetActive(false);
 		StartCoroutine(DelayedEnd());
 	}
 
@@ -137,72 +129,7 @@ public class DialogueController : MonoBehaviour {
 		choiceMade?.Invoke();
 	}
 
-	private IEnumerator UpdateTarget() {
-		EventSystem.current.SetSelectedGameObject(null);
-		yield return null;
-		EventSystem.current.SetSelectedGameObject(choices[0]);
-	}
-
 	#endregion
 
-
-	#region UI
-
-	private void ShowUI() {
-		leftView.SetActive(false);
-		rightView.SetActive(false);
-		choiceView.SetActive(false);
-		dialogueView.SetActive(true);
-	}
-
-	private void DisplayLine(CharacterData speaker, string line) {
-		if (speaker == null) {
-			speakerNameLeft.text = "";
-			portraitLeft.sprite = null;
-			portraitLeft.color = Color.white;
-			dialogueTextLeft.text = line;
-			leftView.SetActive(true);
-			rightView.SetActive(false);
-			choiceView.SetActive(false);
-		}
-		else {
-			if (speaker.rightSided) {
-				speakerNameRight.text = speaker.characterName;
-				portraitRight.sprite = speaker.portrait;
-				portraitRight.color = speaker.standInColor;
-				dialogueTextRight.text = line;
-				leftView.SetActive(false);
-				rightView.SetActive(true);
-				choiceView.SetActive(false);
-			}
-			else {
-				speakerNameLeft.text = speaker.characterName;
-				portraitLeft.sprite = speaker.portrait;
-				portraitLeft.color = speaker.standInColor;
-				dialogueTextLeft.text = line;
-				leftView.SetActive(true);
-				rightView.SetActive(false);
-				choiceView.SetActive(false);
-			}
-		}
-	}
-
-	private void DisplayChoices(CoolStory.ChoiceData choiceData) {
-		for (int i = 0; i < choices.Length; i++) {
-			if (i >= choiceData.choices.Length) {
-				choices[i].SetActive(false);
-			}
-			else {
-				choiceTexts[i].text = choiceData.choices[i].text;
-				choices[i].SetActive(true);
-			}
-		}
-		leftView.SetActive(false);
-		rightView.SetActive(false);
-		choiceView.SetActive(true);
-		StartCoroutine(UpdateTarget());
-	}
-
-	#endregion
 
 }

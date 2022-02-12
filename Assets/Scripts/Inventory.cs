@@ -26,7 +26,15 @@ public class Inventory : MonoBehaviour {
 
 
 	private void Setup() {
+		Zone.onSpawnComplete += RefreshContent;
+	}
 
+	private void OnDestroy() {
+		Zone.onSpawnComplete -= RefreshContent;
+	}
+
+	private void RefreshContent() {
+		onInventoryUpdated?.Invoke(currentItems);
 	}
 
 	public bool HasItem(string itemId) {

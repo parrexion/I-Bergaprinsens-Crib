@@ -1,4 +1,4 @@
--> example_world.mystery_man
+-> example_world.col_mustard
 
 === example_world ===
 
@@ -40,7 +40,7 @@ MM: See you around!
 -> END
 
 =mystery_man_sell
-MM: I got some pills for sale. I got {not Item_RedPill: a red one{not Item_BluePill: and }}{not Item_BluePill:a blue one}. You're interested?
+MM: I got some pills for sale. I got {not Item_RedPill:a red one{not Item_BluePill: and }}{not Item_BluePill:a blue one}. You're interested?
 * [Get red pill]
     PR: I like red things so I'll take the red one.
     MM: Pleasure doing business with you! #Item-get:RedPill
@@ -54,7 +54,7 @@ MM: I got some pills for sale. I got {not Item_RedPill: a red one{not Item_BlueP
         -> mystery_man_goodbye
 
 = mystery_man_goodbye
-MM: Well goodbye then.
+MM: Well goodbye then. {Item_BluePill:a blue one}
 -> END
 
 

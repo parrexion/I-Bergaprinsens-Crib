@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-
+	
 	public CharacterController characterController;
 	public float horizontalSpeed = 3f;
 	public float verticalSpeed = 3f;
@@ -39,6 +39,10 @@ public class Player : MonoBehaviour {
 			interact.PlayerEnter();
 			currentTarget = interact;
 		}
+		else if (other.tag == "ZoneTrigger") {
+			enabled = false;
+			other.GetComponent<ZoneTrigger>().GoToNextScene();
+		}
 	}
 
 	private void OnTriggerExit(Collider other) {
@@ -48,5 +52,9 @@ public class Player : MonoBehaviour {
 			if (interact == currentTarget)
 				currentTarget = null;
 		}
+	}
+
+	public void Spawn(Vector3 position) {
+		transform.position = position;
 	}
 }

@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NPC : Interactable {
+	
+	public Area area = Area.example_world;
+	public string dialogueId;
 
-	public Canvas surpriseCanvas;
-
-
-	protected override void Start() {
-		base.Start();
-		surpriseCanvas.worldCamera = Camera.main;
-	}
 
 	public override void Interact() {
 		base.Interact();
-		DialogueController.startDialogue?.Invoke(area, dialogueId);
+		DialogueController.instance.StartDialogue(area, dialogueId);
 	}
 }
