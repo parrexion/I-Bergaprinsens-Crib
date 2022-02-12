@@ -12,12 +12,14 @@ public class DialogueUI : MonoBehaviour {
 	[Header("Left side")]
 	public GameObject leftView;
 	public Image portraitLeft;
+	public Image portraitBackgroundLeft;
 	public TextMeshProUGUI speakerNameLeft;
 	public TextMeshProUGUI dialogueTextLeft;
 
 	[Header("Right side")]
 	public GameObject rightView;
 	public Image portraitRight;
+	public Image portraitBackgroundRight;
 	public TextMeshProUGUI speakerNameRight;
 	public TextMeshProUGUI dialogueTextRight;
 
@@ -46,6 +48,7 @@ public class DialogueUI : MonoBehaviour {
 		DialogueController.instance.MakeChoice(index);
 	}
 
+
 	#region UI
 
 	private void ShowUI() {
@@ -63,7 +66,7 @@ public class DialogueUI : MonoBehaviour {
 		if (speaker == null) {
 			speakerNameLeft.text = "";
 			portraitLeft.sprite = null;
-			portraitLeft.color = Color.white;
+			portraitBackgroundLeft.color = Color.white;
 			dialogueTextLeft.text = line;
 			leftView.SetActive(true);
 			rightView.SetActive(false);
@@ -73,7 +76,7 @@ public class DialogueUI : MonoBehaviour {
 			if (speaker.rightSided) {
 				speakerNameRight.text = speaker.characterName;
 				portraitRight.sprite = speaker.portrait;
-				portraitRight.color = speaker.standInColor;
+				portraitBackgroundRight.color = speaker.standInColor;
 				dialogueTextRight.text = line;
 				leftView.SetActive(false);
 				rightView.SetActive(true);
@@ -82,7 +85,7 @@ public class DialogueUI : MonoBehaviour {
 			else {
 				speakerNameLeft.text = speaker.characterName;
 				portraitLeft.sprite = speaker.portrait;
-				portraitLeft.color = speaker.standInColor;
+				portraitBackgroundLeft.color = speaker.standInColor;
 				dialogueTextLeft.text = line;
 				leftView.SetActive(true);
 				rightView.SetActive(false);

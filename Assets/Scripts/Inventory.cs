@@ -19,10 +19,12 @@ public class Inventory : MonoBehaviour {
 	public enum InventoryAction { GET, REMOVE };
 
 	public System.Action<List<ItemData>> onInventoryUpdated;
+	public System.Action<List<ItemData>> onFurninshingUpdated;
 
 	public ItemLibrary itemLibrary;
 
 	private List<ItemData> currentItems = new List<ItemData>();
+	private List<ItemData> furniture = new List<ItemData>();
 
 
 	private void Setup() {
@@ -35,6 +37,7 @@ public class Inventory : MonoBehaviour {
 
 	private void RefreshContent() {
 		onInventoryUpdated?.Invoke(currentItems);
+		onFurninshingUpdated?.Invoke(furniture);
 	}
 
 	public bool HasItem(string itemId) {
@@ -65,6 +68,16 @@ public class Inventory : MonoBehaviour {
 				onInventoryUpdated?.Invoke(currentItems);
 				Debug.Log("Removed item: " + itemId);
 				return;
+			}
+		}
+	}
+
+	public void InstallItem(ItemData item) {
+		for (int i = 0; i < currentItems.Count; i++) {
+			if (currentItems[i].id == item.id) {
+				currentItems.RemoveAt(i);
+				furniture.Add(item);
+				break;
 			}
 		}
 	}

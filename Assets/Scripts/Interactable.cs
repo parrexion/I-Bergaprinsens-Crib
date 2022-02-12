@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Area { system, example_world }
+public enum Area { system, example_world, area1, area2, area3 }
 
 public class Interactable : MonoBehaviour {
 

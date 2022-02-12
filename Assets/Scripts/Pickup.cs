@@ -29,6 +29,7 @@ public class Pickup : Interactable {
 		DialogueController.instance.endDialogue -= Cleanup;
 		pickupDictionary[pickupId] = true;
 		Inventory.instance.AddItem(pickupItem);
+		DialogueController.instance.AddItem(pickupItem);
 		Destroy(gameObject);
 	}
 }

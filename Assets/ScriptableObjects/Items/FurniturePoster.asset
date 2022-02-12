@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0069833b0d776444a8855eda9008474d, type: 3}
-  m_Name: ItemKeys
+  m_Name: FurniturePoster
   m_EditorClassIdentifier: 
-  id: keys
-  itemName: Keys
-  itemIcon: {fileID: 21300000, guid: a8fa356a233bfe64f970078161a8c62e, type: 3}
+  id: poster
+  itemName: 
+  itemIcon: {fileID: 21300000, guid: b1a4a7245aec1ae47b4716b5fe634c4e, type: 3}
   standInColor: {r: 1, g: 1, b: 1, a: 1}

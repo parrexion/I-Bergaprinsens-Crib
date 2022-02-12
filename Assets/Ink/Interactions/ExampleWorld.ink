@@ -1,4 +1,4 @@
--> example_world.col_mustard
+/*-> example_world.col_mustard*/
 
 === example_world ===
 
@@ -54,7 +54,7 @@ MM: I got some pills for sale. I got {not Item_RedPill:a red one{not Item_BluePi
         -> mystery_man_goodbye
 
 = mystery_man_goodbye
-MM: Well goodbye then. {Item_BluePill:a blue one}
+MM: Well goodbye then.
 -> END
 
 

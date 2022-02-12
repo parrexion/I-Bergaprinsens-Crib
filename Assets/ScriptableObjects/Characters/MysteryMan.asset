@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MysteryMan
   m_EditorClassIdentifier: 
   id: MM
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 0d7eb3dfe1f576544b2b02ff1a759f3f, type: 3}
   characterName: Mystery Man
   standInColor: {r: 0.57175344, g: 0.2, b: 0.98039216, a: 1}
   rightSided: 0

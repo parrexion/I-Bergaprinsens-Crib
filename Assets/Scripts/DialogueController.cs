@@ -63,6 +63,10 @@ public class DialogueController : MonoBehaviour {
 		StartCoroutine(DelayedChoice());
 	}
 
+	public void AddItem(ItemData itemData) {
+		story.SetItemFlag(itemData.id, true);
+	}
+
 	private void ContinueDialogue() {
 		if (!runningDialogue)
 			return;
