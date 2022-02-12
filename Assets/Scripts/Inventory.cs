@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 
-	public enum InventoryAction { GET, REMOVE };
+	public enum InventoryAction { GET, REMOVE, PLACE };
 
 	public System.Action<List<ItemData>> onInventoryUpdated;
 	public System.Action<List<ItemData>> onFurninshingUpdated;
@@ -77,6 +77,8 @@ public class Inventory : MonoBehaviour {
 			if (currentItems[i].id == item.id) {
 				currentItems.RemoveAt(i);
 				furniture.Add(item);
+				onInventoryUpdated?.Invoke(currentItems);
+				onFurninshingUpdated?.Invoke(furniture);
 				break;
 			}
 		}

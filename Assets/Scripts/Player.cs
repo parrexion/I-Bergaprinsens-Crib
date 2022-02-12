@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
 	
 	public CharacterController characterController;
+	public Transform playerAvatar;
+	public Animator animatorController;
 	public float horizontalSpeed = 3f;
 	public float verticalSpeed = 3f;
+	public float rotateSpeed = 90f;
 
 	private Interactable currentTarget;
 
@@ -22,10 +26,17 @@ public class Player : MonoBehaviour {
 		moveDirection.x *= horizontalSpeed;
 		moveDirection.z *= verticalSpeed;
 		characterController.SimpleMove(moveDirection);
+		animatorController.SetFloat("Movespeed", moveDirection.sqrMagnitude);
+		if (moveDirection.sqrMagnitude > 0f) {
+			Quaternion forwardRot = Quaternion.LookRotation(moveDirection);
+			playerAvatar.rotation = Quaternion.RotateTowards(playerAvatar.rotation, forwardRot, rotateSpeed);
+		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			if (currentTarget != null) {
-				currentTarget.Interact();
+				Vector3 dir = new Vector3(currentTarget.transform.position.x - playerAvatar.position.x, 0f, currentTarget.transform.position.z - playerAvatar.position.z);
+				playerAvatar.rotation = Quaternion.LookRotation(dir);
+				currentTarget.Interact(playerAvatar);
 			}
 		}
 	}

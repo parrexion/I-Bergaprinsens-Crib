@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Zone : MonoBehaviour {
 
-	public enum Scene { DemoScene, DemoScene2 }
+	public enum Scene { DemoScene, DemoScene2, TheCrib }
 
-	public static string nextSpawn = "ForestEntrance";
+	public static string nextSpawn = "Test";
 	public static System.Action onSpawnComplete;
 	public static System.Action onSpawnStarting;
 
@@ -26,12 +26,6 @@ public class Zone : MonoBehaviour {
 		AudioController.instance.PlayMusic(zoneMusic);
 
 		if (!string.IsNullOrEmpty(nextSpawn)) {
-			//	for (int i = 0; i < spawnPoints.Length; i++) {
-			//		if (spawnPoints[i].id == nextSpawn) {
-			//			FindObjectOfType<Player>().Spawn(spawnPoints[i].spawnPoint.position);
-			//			break;
-			//		}
-			//	}
 			StartCoroutine(DelayedSpawn());
 		}
 	}

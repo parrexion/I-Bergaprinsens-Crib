@@ -1,0 +1,32 @@
+
+=== crib ===
+
+= crib_item_check
+VAR Item_bed = false
+VAR Item_carpet = false
+VAR Item_chair = false
+VAR Item_drawer = false
+VAR Item_lamp = false
+VAR Item_poster = false
+VAR Item_radio = false
+{Item_bed: -> crib_bed}
+->crib_no_update
+
+= crib_bed
+Cool bed
+Comfy
+-> crib_item_check
+
+= crib_carpet
+Cool carpet
+Comfy
+-> crib_item_check
+
+= crib_no_update
+There are still a lot of stuff missing.
+->crib_leave
+
+
+= crib_leave
+Well, I better get back to get new stuff for mah crib.
+->END

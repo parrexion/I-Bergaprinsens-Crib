@@ -95,6 +95,12 @@ public class CoolStory {
 						itemId = tagSplit[1]
 					});
 				}
+				else if (tagSplit[0].EndsWith("place")) {
+					line.itemTags.Add(new ItemTag {
+						action = Inventory.InventoryAction.PLACE,
+						itemId = tagSplit[1]
+					});
+				}
 				else {
 					Debug.LogError("Unknown item tag: " + tagSplit[0]);
 				}

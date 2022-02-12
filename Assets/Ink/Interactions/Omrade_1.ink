@@ -1,4 +1,3 @@
--> area1.shop_man
 
 === area1 ===
 

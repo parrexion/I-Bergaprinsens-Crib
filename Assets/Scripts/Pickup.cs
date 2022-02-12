@@ -18,9 +18,7 @@ public class Pickup : Interactable {
 		}
 	}
 
-	public override void Interact() {
-		base.Interact();
-
+	public override void Interact(Transform player) {
 		DialogueController.instance.endDialogue += Cleanup;
 		DialogueController.instance.StartPickupItem(pickupItem);
 	}

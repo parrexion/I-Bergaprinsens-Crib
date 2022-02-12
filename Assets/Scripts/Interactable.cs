@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Area { system, example_world, area1, area2, area3 }
+public enum Area { system, example_world, area1, area2, area3, crib }
 
 public class Interactable : MonoBehaviour {
 
@@ -24,5 +24,5 @@ public class Interactable : MonoBehaviour {
 		interactionMarker.SetActive(false);
 	}
 
-	public virtual void Interact() { }
+	public virtual void Interact(Transform player) { }
 }

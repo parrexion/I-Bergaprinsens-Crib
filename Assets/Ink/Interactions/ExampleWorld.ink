@@ -1,4 +1,3 @@
-/*-> example_world.col_mustard*/
 
 === example_world ===
 

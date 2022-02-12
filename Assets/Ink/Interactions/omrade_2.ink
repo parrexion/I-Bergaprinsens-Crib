@@ -1,10 +1,8 @@
--> area2.lamp_man
 
 === area2 ===
 
 = lamp_man
 VAR Item_keys=false
-VAR Item_lamp=false
 VAR lamp_man_visit=false
 VAR lamp_man_visit2=false
 
