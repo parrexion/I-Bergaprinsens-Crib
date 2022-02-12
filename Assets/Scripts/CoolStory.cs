@@ -9,9 +9,29 @@ public class CoolStory {
 	public class LineData {
 		public string characterId;
 		public string text;
+		public List<ItemTag> itemTags = new List<ItemTag>();
+		public List<FlagTag> flagTags = new List<FlagTag>();
+	}
+
+	[System.Serializable]
+	public class ChoiceData {
+		public Choice[] choices;
+	}
+
+	[System.Serializable]
+	public class ItemTag {
+		public Inventory.InventoryAction action;
+		public string itemId;
+	}
+
+	[System.Serializable]
+	public class FlagTag {
+		public string flag;
+		public bool value;
 	}
 
 	public bool HasStory => currentStory != null;
+	public bool HasChoices => currentStory.currentChoices.Count > 0;
 	public bool CanContinue => currentStory.canContinue;
 
 	private Story currentStory;
@@ -21,21 +41,87 @@ public class CoolStory {
 		currentStory = new Story(inkJSON.text);
 	}
 
-	public LineData GetNextText() {
-		string text = currentStory.Continue();
-		string[] split = text.Split(':');
+	public void SetPath(Area area, string path) {
+		currentStory.ChoosePathString($"{area}.{path}");
+	}
 
-		if (split.Length > 1) {
-			return new LineData {
-				characterId = split[0],
-				text = split[1]
-			};
+	public void SetItemFlag(string itemId, bool value) {
+		currentStory.variablesState[$"Item_{itemId}"] = value;
+	}
+
+	public void SetStoryFlag(string flagId, bool value) {
+		currentStory.variablesState[flagId] = value;
+	}
+
+	public LineData GetNextText() {
+		LineData line = new LineData();
+		string text = currentStory.Continue();
+		string[] speakerSplit = text.Split(':');
+
+		if (speakerSplit.Length > 1) {
+			if (speakerSplit[0].StartsWith("true") || speakerSplit[0].StartsWith("false")) {
+				speakerSplit[0] = speakerSplit[0].Split(' ')[1];
+			}
+			line.characterId = speakerSplit[0];
+			line.text = speakerSplit[1].Trim();
 		}
 		else {
-			return new LineData {
-				characterId = "",
-				text = text
-			};
+			line.text = text.Trim();
 		}
+
+		List<string> tags = currentStory.currentTags;
+		for (int i = 0; i < currentStory.currentTags.Count; i++) {
+			Debug.Log("Tag: " + currentStory.currentTags[i]);
+			string[] tagSplit = currentStory.currentTags[i].Split(':');
+			if (tagSplit.Length != 2) {
+				Debug.LogError("Wrong tag format for tag: " + currentStory.currentTags[i]);
+				continue;
+			}
+			if (tagSplit[0].StartsWith("Item")) {
+				if (tagSplit[0].EndsWith("get")) {
+					line.itemTags.Add(new ItemTag {
+						action = Inventory.InventoryAction.GET,
+						itemId = tagSplit[1]
+					});
+				}
+				else if (tagSplit[0].EndsWith("remove")) {
+					line.itemTags.Add(new ItemTag {
+						action = Inventory.InventoryAction.REMOVE,
+						itemId = tagSplit[1]
+					});
+				}
+				else {
+					Debug.LogError("Unknown item tag: " + tagSplit[0]);
+				}
+			}
+			else if (tagSplit[0].StartsWith("Flag")) {
+				if (tagSplit[0].EndsWith("set")) {
+					line.flagTags.Add(new FlagTag {
+						flag = tagSplit[0],
+						value = false
+					});
+				}
+				else if (tagSplit[0].EndsWith("clear")) {
+					line.flagTags.Add(new FlagTag {
+						flag = tagSplit[1],
+						value = false
+					});
+				}
+				else {
+					Debug.LogError("Unknown flag tag: " + tagSplit[0]);
+				}
+			}
+		}
+
+
+		return line;
+	}
+
+	public ChoiceData GetChoices() {
+		return new ChoiceData { choices = currentStory.currentChoices.ToArray() };
+	}
+
+	public void MakeChoice(int path) {
+		currentStory.ChooseChoiceIndex(path);
 	}
 }

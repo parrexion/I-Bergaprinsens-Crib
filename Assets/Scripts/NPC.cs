@@ -14,6 +14,6 @@ public class NPC : Interactable {
 
 	public override void Interact() {
 		base.Interact();
-		DialogueController.startDialogue?.Invoke(inkJSON);
+		DialogueController.startDialogue?.Invoke(area, dialogueId);
 	}
 }

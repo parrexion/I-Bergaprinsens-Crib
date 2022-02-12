@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Area { example_world }
+
 public class Interactable : MonoBehaviour {
 
 	public GameObject interactionMarker;
-	public TextAsset inkJSON;
+	public Area area = Area.example_world;
+	public string dialogueId;
 
 
 	protected virtual void Start() {
