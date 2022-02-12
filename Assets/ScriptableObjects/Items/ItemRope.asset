@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0069833b0d776444a8855eda9008474d, type: 3}
   m_Name: ItemRope
   m_EditorClassIdentifier: 
-  id: 
-  itemName: 
+  id: rope
+  itemName: Rope
   itemIcon: {fileID: 21300000, guid: e2060d4cf0b9a5f4da10a045af2cd7cf, type: 3}
   standInColor: {r: 1, g: 1, b: 1, a: 1}

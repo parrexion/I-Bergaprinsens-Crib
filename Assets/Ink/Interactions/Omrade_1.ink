@@ -1,6 +1,6 @@
+-> area1.shop_man
 
 === area1 ===
-
 
 = shop_man
 VAR Item_lampoil=false
@@ -12,9 +12,11 @@ VAR Item_plant=false
 VAR lampoil_not_bought=true
 VAR axe_not_bought=true
 
-{not shop_man_visit1: ->shop_man_intro1}
-{not shop_man_visit2: ->shop_man_intro2}
-->shop_man_again
+{not shop_man_visit1: ->shop_man_intro2}
+
+{not shop_man_visit2: ->shop_man_again}
+
+->shop_man_intro1
 
 =shop_man_intro1
 PR: Hey man, you won’t believe what just happened to me
@@ -22,15 +24,15 @@ SM: Happened you say? I don’t believe in anything, so what’s wrong?
 PR: Someone broke into my crib and stole all of my stuff
 SM: Stuff? Like your belongings you say?
 PR: Yeah it’s all gone and I have no idea who did it. Did you see anything?
-SM: See anything you say? I see many things, but that thing I didn’t
+SM: See anything you say? I see many things, but not anyone else.
 PR: Darn it… What do I do now?
-SM: What to do you say? Well go look for them. They can’t have gone far
+SM: What to do you say? Well go look for them. They can’t have gone far.
 PR: True, I can’t give up now, but what makes you so certain?
 SM: Certain you say? I mean your bed is heavy as a mother tr…. I MEAN, a lot of things yes
 PR: oookay? You know where to start?
 SM: Start you say? Maybe ask the others that live here?
-PR: Right, that I will do then, thanks
-SM: No problem, stop by anytime if you want to ask or buy something, I got nice wares
+PR: Right, that I will do then, thanks!
+SM: No problem, stop by anytime if you want to ask or buy something, I got nice wares.
 PR: Will do! PEACE!
 ~ shop_man_visit1=true
 ->shop_man_goodluck
@@ -65,9 +67,9 @@ SM: Hi again, interested in my wares?
 ->shop_man_sell
 
 = shop_man_sell
-SM: What do you need? I got {not Item_lampoil:lampoil{not Item_axe: and }}{not Item_axe:an axe}.
+SM: What do you need? I got {not Item_lampoil:lamp oil{not Item_axe: and }}{not Item_axe:an axe}.
 {lampoil_not_bought:
-* [Lampoil]
+* [Lamp oil]
     {not Item_coin:
     You need coin to buy that
     ->shop_man_sell
@@ -91,7 +93,7 @@ SM: What do you need? I got {not Item_lampoil:lampoil{not Item_axe: and }}{not I
 
 =shop_man_goodluck
 SM: Good luck!
-                       
+
 ->END
 
 = shop_man_goodbye

@@ -279,7 +279,7 @@ MonoBehaviour:
   animatorController: {fileID: 4183046449100960889}
   horizontalSpeed: 12
   verticalSpeed: 6
-  rotateSpeed: 90
+  rotateSpeed: 10
 --- !u!143 &1502293903355185683
 CharacterController:
   m_ObjectHideFlags: 0

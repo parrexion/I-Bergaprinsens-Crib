@@ -96,6 +96,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC-Fairy_girl
       objectReference: {fileID: 0}
+    - target: {fileID: 8964859549165437477, guid: 2fe67026973aa474fbcbad45cbeba5a5,
+        type: 3}
+      propertyPath: dialogueId
+      value: elf_girl
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964859549165437477, guid: 2fe67026973aa474fbcbad45cbeba5a5,
+        type: 3}
+      propertyPath: area
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8964859549165437479, guid: 2fe67026973aa474fbcbad45cbeba5a5,
         type: 3}
       propertyPath: m_LocalPosition.x

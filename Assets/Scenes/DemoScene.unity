@@ -790,6 +790,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8964859549805708159, guid: 2fe67026973aa474fbcbad45cbeba5a5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964859549805708159, guid: 2fe67026973aa474fbcbad45cbeba5a5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964859549805708159, guid: 2fe67026973aa474fbcbad45cbeba5a5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fe67026973aa474fbcbad45cbeba5a5, type: 3}
 --- !u!1001 &339766761
@@ -3272,8 +3287,14 @@ PrefabInstance:
     - target: {fileID: 2802147552422512813, guid: 1398a1d53a90c7a4c953fb72c8a653ec,
         type: 3}
       propertyPath: pickupId
-      value: BluePillPickup
+      value: RedPillPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 2802147552422512813, guid: 1398a1d53a90c7a4c953fb72c8a653ec,
+        type: 3}
+      propertyPath: pickupItem
+      value: 
+      objectReference: {fileID: 11400000, guid: a5f0d93a8db8e2a41ae431c21691d323,
+        type: 2}
     - target: {fileID: 2802147552422512814, guid: 1398a1d53a90c7a4c953fb72c8a653ec,
         type: 3}
       propertyPath: m_Name
@@ -3326,22 +3347,22 @@ PrefabInstance:
     - target: {fileID: 1497267714094547555, guid: 31f28143b9e18e2468906ea4c4e16ca7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1497267714094547555, guid: 31f28143b9e18e2468906ea4c4e16ca7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.26290503
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1497267714094547555, guid: 31f28143b9e18e2468906ea4c4e16ca7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1497267714094547555, guid: 31f28143b9e18e2468906ea4c4e16ca7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.96482176
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497267714094547555, guid: 31f28143b9e18e2468906ea4c4e16ca7,
         type: 3}
@@ -3356,7 +3377,7 @@ PrefabInstance:
     - target: {fileID: 1497267714094547555, guid: 31f28143b9e18e2468906ea4c4e16ca7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -30.485
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1497267714094547555, guid: 31f28143b9e18e2468906ea4c4e16ca7,
         type: 3}
@@ -3367,6 +3388,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497267714835715180, guid: 31f28143b9e18e2468906ea4c4e16ca7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497267714835715180, guid: 31f28143b9e18e2468906ea4c4e16ca7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.258819
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497267714835715180, guid: 31f28143b9e18e2468906ea4c4e16ca7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497267714835715180, guid: 31f28143b9e18e2468906ea4c4e16ca7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659259
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497267714835715180, guid: 31f28143b9e18e2468906ea4c4e16ca7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f28143b9e18e2468906ea4c4e16ca7, type: 3}
