@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-	
+
 	public CharacterController characterController;
 	public Transform playerAvatar;
 	public Animator animatorController;
@@ -15,8 +15,10 @@ public class Player : MonoBehaviour {
 
 
 	private void Update() {
-		if (DialogueController.runningDialogue)
+		if (DialogueController.runningDialogue || IngameSettings.inSettings) {
+			animatorController.SetFloat("Movespeed", 0f);
 			return;
+		}
 
 		//Movement
 		Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
@@ -35,9 +37,11 @@ public class Player : MonoBehaviour {
 			if (currentTarget != null) {
 				Vector3 dir = new Vector3(currentTarget.transform.position.x - playerAvatar.position.x, 0f, currentTarget.transform.position.z - playerAvatar.position.z);
 				playerAvatar.rotation = Quaternion.LookRotation(dir);
-				animatorController.SetFloat("Movespeed", 0f);
 				currentTarget.Interact(playerAvatar);
 			}
+		}
+		else if (Input.GetKeyDown(KeyCode.Escape)) {
+			IngameSettings.instance.Show();
 		}
 	}
 
@@ -52,6 +56,7 @@ public class Player : MonoBehaviour {
 		}
 		else if (other.tag == "ZoneTrigger") {
 			enabled = false;
+			animatorController.SetFloat("Movespeed", 0f);
 			other.GetComponent<ZoneTrigger>().GoToNextScene();
 		}
 	}

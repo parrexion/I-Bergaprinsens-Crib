@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemLibrary: {fileID: 11400000, guid: 8041d3528be5b414480e44c2fa6d11d9, type: 2}
+  gainItemSfx:
+  - {fileID: 8300000, guid: 721204a8e90398448857a0ff9068d562, type: 3}
+  - {fileID: 8300000, guid: 3a88d1a125d2edf4f8d2a888d3671dce, type: 3}
+  - {fileID: 8300000, guid: 33e3ed11266fc6c43876b97323bfbd77, type: 3}

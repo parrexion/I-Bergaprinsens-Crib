@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Zone : MonoBehaviour {
 
-	public enum Scene { DemoScene, DemoScene2, TheCrib }
+	public enum Scene { DemoScene, DemoScene2, MainMenuScene, TheCrib, Area1Field, Area2Lake, Area3Forest }
 
 	public static string nextSpawn = "Test";
 	public static System.Action onSpawnComplete;
@@ -19,11 +19,16 @@ public class Zone : MonoBehaviour {
 	}
 
 	public AudioClip zoneMusic;
+	public AudioClip ambienceMusic;
 	public SpawnPoint[] spawnPoints = new SpawnPoint[0];
 
 
 	private void Start() {
 		AudioController.instance.PlayMusic(zoneMusic);
+		if (ambienceMusic != null)
+			AudioController.instance.PlayAmbience(ambienceMusic);
+		else
+			AudioController.instance.StopAmbience();
 
 		if (!string.IsNullOrEmpty(nextSpawn)) {
 			StartCoroutine(DelayedSpawn());
@@ -53,6 +58,5 @@ public class Zone : MonoBehaviour {
 	private IEnumerator DelayedNextZone(Scene scene) {
 		yield return new WaitForSeconds(FadeIn.FADE_OUT_SPEED);
 		SceneManager.LoadScene(scene.ToString());
-
 	}
 }

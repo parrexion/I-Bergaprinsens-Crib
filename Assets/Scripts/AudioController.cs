@@ -25,15 +25,14 @@ public class AudioController : MonoBehaviour {
 	[Header("Settings")]
 	public float fadeTime = 1f;
 	public float musicVolume = 0.2f;
-	public float voiceVolume = 0.2f;
 	public float sfxVolume = 0.2f;
 
 
 	private void Setup() {
 		bkgSource.volume = bkgSourceFade.volume = musicVolume;
 		bkgSource.loop = bkgSourceFade.loop = true;
-		voiceSource.volume = voiceVolume;
-		voiceSource.loop = false;
+		voiceSource.volume = musicVolume;
+		voiceSource.loop = true;
 		sfxSource.volume = sfxVolume;
 		sfxSource.loop = false;
 	}
@@ -43,10 +42,10 @@ public class AudioController : MonoBehaviour {
 		bkgSource.volume = bkgSourceFade.volume = musicVolume;
 	}
 
-	public void SetVoiceVolume(float volume) {
-		voiceVolume = volume;
-		voiceSource.volume = voiceVolume;
-	}
+	//public void SetVoiceVolume(float volume) {
+	//	voiceVolume = volume;
+	//	voiceSource.volume = voiceVolume;
+	//}
 
 	public void SetSfxVolume(float volume) {
 		sfxVolume = volume;
@@ -62,9 +61,13 @@ public class AudioController : MonoBehaviour {
 		StartCoroutine(FadeMusic());
 	}
 
-	public void PlayVoiceOver(AudioClip voiceOver) {
+	public void PlayAmbience(AudioClip voiceOver) {
 		voiceSource.clip = voiceOver;
 		voiceSource.Play();
+	}
+
+	public void StopAmbience() {
+		voiceSource.Stop();
 	}
 
 	public void PlaySfx(AudioClip sfx) {

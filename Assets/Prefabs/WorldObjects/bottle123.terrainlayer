@@ -7,7 +7,7 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: bottle123
-  m_DiffuseTexture: {fileID: 2800000, guid: 09c6d983c87f108418b91ed8604b9a09, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 6d5f65bc6dfd52742bf74120f2fe4de6, type: 3}
   m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FurnitureLamp
   m_EditorClassIdentifier: 
   id: lamp
-  itemName: 
+  itemName: Lamp
   itemIcon: {fileID: 21300000, guid: fe358d2926260594d9e65c02b1330ea2, type: 3}
   standInColor: {r: 1, g: 1, b: 1, a: 1}
+  isFurniture: 1

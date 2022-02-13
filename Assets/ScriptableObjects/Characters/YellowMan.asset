@@ -15,4 +15,5 @@ MonoBehaviour:
   id: YM
   portrait: {fileID: 0}
   characterName: Col. Mustard
-  standInColor: {r: 0.94335216, g: 0.9811321, b: 0.19900322, a: 1}
+  standInColor: {r: 1, g: 1, b: 1, a: 1}
+  rightSided: 0

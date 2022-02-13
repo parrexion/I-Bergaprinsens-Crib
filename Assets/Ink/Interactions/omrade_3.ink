@@ -3,14 +3,14 @@
 === area3 ===
 
 = elf_girl
-VAR elf_girl_visit=false
 VAR Item_flask=false
+VAR Item_shoe=false
+VAR Item_rope=false
+VAR elf_girl_visit=false
 VAR elf_girl_visit2=false
 VAR elf_girl_visit3=false
-VAR Item_shoe=false
 VAR elf_girl_visit4=false
 VAR elf_girl_visit5=false
-VAR Item_rope=false
 VAR elf_girl_visit6=false
 
 {elf_girl_visit6: ->elf_girl_again6}
@@ -28,24 +28,28 @@ VAR elf_girl_visit6=false
 ->elf_girl_intro
 
 =elf_girl_intro
-EG: Oh hello there you stallion! You’re looking like a snack today hihi
-PR: What have I said about calling me weird names, knock it off
-EG: Hihi calm down mr. handsome I’m just teasing with you
+EG: Oh hello there you stallion! You’re looking like a snack today hihi.
+PR: What have I said about calling me weird names, knock it off.
+EG: Hihi calm down mr. handsome I’m just teasing you.
 PR: And I’m just trying to live my life ok?
-PR: ugh… I can’t believe I’m gonna ask you for help but I’m in a special situation here
-EG: Oh no what have you done now naughty boy hihi
-PR: I haven’t done anything and I’m very well behaved… when I need to at least
+PR: ugh… I can’t believe I’m gonna ask you for help but I’m in a special situation here.
+EG: Oh no what have you done now naughty boy hihi?
+PR: I haven’t done anything and I’m very well behaved…
+PR: When I need to at least
 PR: Someone broke into my crib and stole everything…
-PR: Even my 7.7" Boombox
-EG: I’m very sorry to hear that, you want a hug? Maybe some snuggles to cheer you up?
-PR: Oh god no. What I need is my things back. Have you seen anything?
+PR: Even my 7.7" Boombox.
+EG: I’m very sorry to hear that, you want a hug?
+EG: Maybe some snuggles to cheer you up hihi?
+PR: Oh god no.
+PR: What I need is my things back. Have you seen anything?
 EG: Aww, I wish I could help you but if ooonly I could share you my dirty little secrets.
 EG: But maybe if you go buy me some party drink I could maybe share a secret or two hihi.
-PR: Sometimes I wonder why I put up with this.
-PR: Fine I’m gonna leave anyway so sure, I’ll help.
-EG: Good boy hihi. Here’s some coin so you can pay that sweet nectar. #Item-get:coin
-EG: Don’t go spend it on any of your desiiires now hihi
-PR: AAAaaaand it’s time to go BYE
+PR: Sometimes I wonder why I put up with you.
+PR: Fine I’m gonna leave now anyway so sure, I’ll help.
+EG: Good boy hihi.
+EG: Here’s some coin so you can pay that sweet nectar. #Item-get:coin
+EG: Don’t go spend it on any of your desiiires now hihi.
+PR: AAAaaaand it’s time to go BYE.
 ~ elf_girl_visit=true
 ->END
 
@@ -60,7 +64,8 @@ PR: I better get out of here before she does something unexpected to me.
 =elf_girl_flaskgot
 PR: I'm not glad you asked and somehow I actually got some.
 EG: Oh yes, I like a man that isn't afraid to take action, rawr hihi. #Item-remove:flask
-PR: Yikes this escalated quickly. Better run before it's too late.
+PR: Yikes this escalated quickly.
+PR: Better run before it's too late.
 EG: Wait before you go.
 EG: Take this lovely bed as a gift of my appreciation! #Item-get:bed
 EG: I wanted a change so I bought it and tried it out.
@@ -102,7 +107,7 @@ EG: You're so boring...
 EG: Thank you so much though, even if I expected a little more effort. #Item-remove:shoe
 PR: Amazing how you expected me to even do anything for you.
 EG: I think I found your radio or what you call it. #Item-get:radio
-EG: Found it at a second hand shop
+EG: Found it at a second hand shop.
 EG: Well he told me it was second hand at least.
 PR: I can't believe my eyes. It's actually my beautiful Boombox.
 PR: I never knew someone could be this happy. Thanks!
@@ -113,20 +118,20 @@ EG: Any day love hihi!
 =elf_girl_again4
 EG: Well isn't it my favourite errand boy?
 PR: The fact that you even call me that is just flat out disrespectful.
-EG: Oh don't be so overdramatic my little bobo hihi.
+EG: Oh don't be so overdramatic my little boo-boo hihi.
 EG: Only thing missing in my bedroom chamber is a nice sturdy rope.
 PR: Smart idea.
 PR: Then if your house sets on fire you can escape through the window with the rope.
 EG: Oh um right. That was totally my idea my innocent cutie hihi.
-PR: Sure I can give it a go.
+PR: I can give it a go.
 PR: Why stop now when I've gotten so far or something like that.
-EG: I can allway rely on you my favourite prince hihi.
+EG: I can always rely on you my favourite prince hihi.
 ~ elf_girl_visit5=true
 ->END
 
 =elf_girl_again5
 EG: Oh hi I was just thinking of you.
-PR: I can't say the say unfortunately
+PR: I can't say the same unfortunately.
 EG: You found a sturdy nice looking rope for me?
 {Item_rope: ->elf_girl_ropegot}
 PR: Right I forgot about that hehe.

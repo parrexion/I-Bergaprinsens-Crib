@@ -22,6 +22,9 @@ public class Inventory : MonoBehaviour {
 	public System.Action<List<ItemData>> onFurninshingUpdated;
 
 	public ItemLibrary itemLibrary;
+	public AudioClip[] gainItemSfx;
+
+	public int PlacedFurnitures => furniture.Count;
 
 	private List<ItemData> currentItems = new List<ItemData>();
 	private List<ItemData> furniture = new List<ItemData>();
@@ -51,13 +54,16 @@ public class Inventory : MonoBehaviour {
 	public void AddItem(string itemId) {
 		ItemData item = itemLibrary.GetItem(itemId);
 		currentItems.Add(item);
+		currentItems.Sort(SortItems);
 		onInventoryUpdated?.Invoke(currentItems);
 		Debug.Log("Gained item: " + itemId);
 	}
 
 	public void AddItem(ItemData item) {
 		currentItems.Add(item);
+		currentItems.Sort(SortItems);
 		onInventoryUpdated?.Invoke(currentItems);
+		AudioController.instance.PlaySfx(gainItemSfx[Random.Range(0, gainItemSfx.Length)]);
 		Debug.Log("Gained item: " + item.id);
 	}
 
@@ -72,15 +78,24 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 
-	public void InstallItem(ItemData item) {
+	public void PlaceItem(string itemId) {
 		for (int i = 0; i < currentItems.Count; i++) {
-			if (currentItems[i].id == item.id) {
+			if (currentItems[i].id == itemId) {
+				furniture.Add(currentItems[i]);
 				currentItems.RemoveAt(i);
-				furniture.Add(item);
+				AudioController.instance.PlaySfx(gainItemSfx[Random.Range(0, gainItemSfx.Length)]);
 				onInventoryUpdated?.Invoke(currentItems);
 				onFurninshingUpdated?.Invoke(furniture);
 				break;
 			}
 		}
+	}
+
+	private int SortItems(ItemData x, ItemData y) {
+		if (x.isFurniture == y.isFurniture)
+			return -1;
+		if (x.isFurniture)
+			return 1;
+		return -1;
 	}
 }

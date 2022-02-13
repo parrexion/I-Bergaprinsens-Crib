@@ -2,6 +2,10 @@
 
 === area1 ===
 
+= area1_sign
+North to the Lake <> East to the forest
+->END
+
 = shop_man
 VAR Item_lampoil=false
 VAR Item_axe=false
@@ -12,28 +16,34 @@ VAR Item_plant=false
 VAR lampoil_not_bought=true
 VAR axe_not_bought=true
 
-{not shop_man_visit1: ->shop_man_intro2}
-
-{not shop_man_visit2: ->shop_man_again}
-
+{shop_man_visit2: ->shop_man_again}
+{shop_man_visit1: ->shop_man_intro2}
 ->shop_man_intro1
 
 =shop_man_intro1
-PR: Hey man, you won’t believe what just happened to me
-SM: Happened you say? I don’t believe in anything, so what’s wrong?
-PR: Someone broke into my crib and stole all of my stuff
+PR: Hey man, you won’t believe what just happened to me.
+SM: Happened you say?
+SM: I don’t believe in anything, so what’s wrong?
+PR: Someone broke into my crib and stole all of my stuff.
 SM: Stuff? Like your belongings you say?
-PR: Yeah it’s all gone and I have no idea who did it. Did you see anything?
+PR: Yeah it’s all gone and I have no idea who did it.
+PR: Did you see anything?
 SM: See anything you say? I see many things, but not anyone else.
-PR: Darn it… What do I do now?
-SM: What to do you say? Well go look for them. They can’t have gone far.
-PR: True, I can’t give up now, but what makes you so certain?
-SM: Certain you say? I mean your bed is heavy as a mother tr…. I MEAN, a lot of things yes
-PR: oookay? You know where to start?
+PR: Darn it…
+PR: What do I do now?
+SM: What to do you say? Well go look for them.
+SM: They can’t have gone far.
+PR: True, I can’t give up now.
+PR: But what makes you so certain?
+SM: Certain you say? I mean your bed is heavy as a mother tr….
+SM: I MEAN, a lot of things yes.
+PR: oookay?
+PR: You know where to start?
 SM: Start you say? Maybe ask the others that live here?
 PR: Right, that I will do then, thanks!
-SM: No problem, stop by anytime if you want to ask or buy something, I got nice wares.
-PR: Will do! PEACE!
+SM: No problem.
+SM: Stop by anytime if you want to ask or buy something, I got nice wares.
+PR: Will do! Peace!
 ~ shop_man_visit1=true
 ->shop_man_goodluck
 
@@ -46,7 +56,7 @@ SM: Why, hello there. Want to buy my wares?
 * [Credit card]
     PR: Do you accept credit card?
     SM: Accept what?
-    PR: Ugh, nevermind
+    PR: Ugh, nevermind.
     ->shop_man_intro3
 + [Nah]
     PR: Nah I'm good.
@@ -67,25 +77,27 @@ SM: Hi again, interested in my wares?
 ->shop_man_sell
 
 = shop_man_sell
-SM: What do you need? I got {not Item_lampoil:lamp oil{not Item_axe: and }}{not Item_axe:an axe}.
+SM: What do you need? I got {lampoil_not_bought:lamp oil{axe_not_bought: and }}{axe_not_bought:an axe}.
 {lampoil_not_bought:
-* [Lamp oil]
++ [Lamp oil]
     {not Item_coin:
-    You need coin to buy that
+    SM: You need coin to buy that.
     ->shop_man_sell
     }
     PR: This might come in handy, I'll buy it!
-    SM: Excellent choice! #Item-get:lampoil
+     ~ lampoil_not_bought=false
+    SM: Excellent choice! #Item-get:lampoil #Item-remove:coin
     -> shop_man_sell
     }
 {axe_not_bought:
-* [Axe]
++ [Axe]
     {not Item_plant:
-    I could trade it for a plant maybe
+    SM: I could trade it for a plant maybe.
     ->shop_man_sell
     }
     PR: Never know when I need this, I'll buy it!
-    SM: Murderous choice! #Item-get:axe
+     ~ axe_not_bought=false
+    SM: Murderous choice! #Item-get:axe #Item-remove:plant
     -> shop_man_sell
     }
 + [I'm good]

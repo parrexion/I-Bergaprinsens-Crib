@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PrinceBoy
   m_EditorClassIdentifier: 
   id: PR
-  portrait: {fileID: 21300000, guid: 6ac5ca1420b63ab43944c4a9fe80734d, type: 3}
+  portrait: {fileID: 21300000, guid: 5b5341975acb0aa499d741d32e3d3b49, type: 3}
   characterName: Prince
-  standInColor: {r: 0.24448201, g: 0.68636596, b: 0.7735849, a: 1}
+  standInColor: {r: 1, g: 1, b: 1, a: 1}
   rightSided: 1

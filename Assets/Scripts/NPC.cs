@@ -10,8 +10,10 @@ public class NPC : Interactable {
 
 
 	public override void Interact(Transform player) {
-		Vector3 dir = new Vector3(player.transform.position.x-transform.position.x, 0f, player.transform.position.z-transform.position.z);
-		avatar.rotation = Quaternion.LookRotation(dir);
+		if (avatar != null) {
+			Vector3 dir = new Vector3(player.transform.position.x-transform.position.x, 0f, player.transform.position.z-transform.position.z);
+			avatar.rotation = Quaternion.LookRotation(dir);
+		}
 		DialogueController.instance.StartDialogue(area, dialogueId);
 	}
 }

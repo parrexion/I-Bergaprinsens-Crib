@@ -4,7 +4,7 @@ INCLUDE omrade_2.ink
 INCLUDE omrade_3.ink
 INCLUDE Crib.ink
 
--> area2.lamp_man
+-> crib.crib_item_check
 
 
 === system ===

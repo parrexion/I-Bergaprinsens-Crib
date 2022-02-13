@@ -10,6 +10,7 @@ public class DialogueController : MonoBehaviour {
 	public System.Action startDialogue;
 	public System.Action endDialogue;
 	public System.Action choiceMade;
+	public System.Action<string> eventTriggered;
 	public System.Action<CharacterData, string> onUpdatedText;
 	public System.Action<CoolStory.ChoiceData> onUpdatedChoice;
 
@@ -82,6 +83,7 @@ public class DialogueController : MonoBehaviour {
 			onUpdatedText?.Invoke(speaker, data.text);
 			HandleItems(data);
 			//HandleFlags(data);
+			HandleEvents(data);
 		}
 		else {
 			FinishDialogue();
@@ -98,13 +100,23 @@ public class DialogueController : MonoBehaviour {
 				Inventory.instance.RemoveItem(data.itemTags[i].itemId);
 				story.SetItemFlag(data.itemTags[i].itemId, false);
 			}
+			else if (data.itemTags[i].action == Inventory.InventoryAction.PLACE) {
+				Inventory.instance.PlaceItem(data.itemTags[i].itemId);
+				story.SetItemFlag(data.itemTags[i].itemId, false);
+				story.SetStoryValue("Furniture_got", Inventory.instance.PlacedFurnitures);
+			}
 		}
 	}
 
-	private void HandleFlags(CoolStory.LineData data) {
-		for (int i = 0; i < data.flagTags.Count; i++) {
-			story.SetStoryFlag(data.flagTags[i].flag, data.flagTags[i].value);
-		}
+	//private void HandleFlags(CoolStory.LineData data) {
+	//	for (int i = 0; i < data.flagTags.Count; i++) {
+	//		story.SetStoryFlag(data.flagTags[i].flag, data.flagTags[i].value);
+	//	}
+	//}
+
+	private void HandleEvents(CoolStory.LineData data) {
+		if (!string.IsNullOrEmpty(data.eventTrigger))
+			eventTriggered?.Invoke(data.eventTrigger);
 	}
 
 	private void FinishDialogue() {

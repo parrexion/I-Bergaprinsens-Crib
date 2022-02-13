@@ -10,7 +10,8 @@ public class CoolStory {
 		public string characterId;
 		public string text;
 		public List<ItemTag> itemTags = new List<ItemTag>();
-		public List<FlagTag> flagTags = new List<FlagTag>();
+		//public List<FlagTag> flagTags = new List<FlagTag>();
+		public string eventTrigger = "";
 	}
 
 	[System.Serializable]
@@ -55,6 +56,10 @@ public class CoolStory {
 	}
 
 	public void SetStoryFlag(string flagId, bool value) {
+		currentStory.variablesState[flagId] = value;
+	}
+
+	public void SetStoryValue(string flagId, int value) {
 		currentStory.variablesState[flagId] = value;
 	}
 
@@ -122,8 +127,10 @@ public class CoolStory {
 			//		Debug.LogError("Unknown flag tag: " + tagSplit[0]);
 			//	}
 			//}
+			else if (tagSplit[0].StartsWith("Event")) {
+				line.eventTrigger = tagSplit[1];
+			}
 		}
-
 
 		return line;
 	}

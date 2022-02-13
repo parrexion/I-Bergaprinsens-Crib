@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: carpet
   itemName: Carpet
-  itemIcon: {fileID: 21300000, guid: 6dd875d80895f8342940b419b68a4ff4, type: 3}
+  itemIcon: {fileID: 21300000, guid: e2a3401c6ae1a964ca1ca65b333dadd0, type: 3}
   standInColor: {r: 1, g: 1, b: 1, a: 1}
+  isFurniture: 1

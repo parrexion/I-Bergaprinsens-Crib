@@ -6,6 +6,7 @@ public class FadeIn : MonoBehaviour {
 	public const float FADE_OUT_SPEED = 0.5f;
 
 	public CanvasGroup fadeGroup;
+	public float speedMultiplier = 1f;
 
 
 	private void Awake() {
@@ -18,13 +19,13 @@ public class FadeIn : MonoBehaviour {
 		Zone.onSpawnComplete -= FadeFromBlack;
 	}
 
-	private void FadeToBlack() {
+	public void FadeToBlack() {
 		fadeGroup.alpha = 0f;
 		fadeGroup.blocksRaycasts = true;
 		StartCoroutine(CoFadeToBlack());
 	}
 
-	private void FadeFromBlack() {
+	public void FadeFromBlack() {
 		fadeGroup.alpha = 1f;
 		fadeGroup.blocksRaycasts = true;
 		StartCoroutine(CoFadeFromBlack());
@@ -34,7 +35,7 @@ public class FadeIn : MonoBehaviour {
 		float duration = FADE_OUT_SPEED;
 		while(duration > 0f) {
 			yield return null;
-			duration -= Time.deltaTime;
+			duration -= Time.deltaTime * speedMultiplier;
 			fadeGroup.alpha = 1f - duration / FADE_OUT_SPEED;
 		}
 		fadeGroup.alpha = 1f;
@@ -45,7 +46,7 @@ public class FadeIn : MonoBehaviour {
 		float duration = FADE_OUT_SPEED;
 		while (duration > 0f) {
 			yield return null;
-			duration -= Time.deltaTime;
+			duration -= Time.deltaTime * speedMultiplier;
 			fadeGroup.alpha = duration / FADE_OUT_SPEED;
 		}
 		fadeGroup.alpha = 0f;

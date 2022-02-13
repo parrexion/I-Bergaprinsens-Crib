@@ -186,7 +186,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.23137257, g: 0.59899586, b: 0.83137256, a: 1}
+  m_BackGroundColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   playerAvatar: {fileID: 1575353851555558744}
   animatorController: {fileID: 4183046449100960889}
   horizontalSpeed: 12
-  verticalSpeed: 6
+  verticalSpeed: 9
   rotateSpeed: 10
 --- !u!143 &1502293903355185683
 CharacterController:
