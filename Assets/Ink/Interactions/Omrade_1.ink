@@ -3,7 +3,7 @@
 === area1 ===
 
 = area1_sign
-North to the Lake <> East to the forest
+North to the Lake <br> East to the forest
 ->END
 
 = shop_man
@@ -16,6 +16,7 @@ VAR Item_plant=false
 VAR lampoil_not_bought=true
 VAR axe_not_bought=true
 
+{not lampoil_not_bought && not axe_not_bought: ->shop_man_soldout}
 {shop_man_visit2: ->shop_man_again}
 {shop_man_visit1: ->shop_man_intro2}
 ->shop_man_intro1
@@ -37,7 +38,7 @@ PR: True, I can’t give up now.
 PR: But what makes you so certain?
 SM: Certain you say? I mean your bed is heavy as a mother tr….
 SM: I MEAN, a lot of things yes.
-PR: oookay?
+PR: oookey?
 PR: You know where to start?
 SM: Start you say? Maybe ask the others that live here?
 PR: Right, that I will do then, thanks!
@@ -77,7 +78,8 @@ SM: Hi again, interested in my wares?
 ->shop_man_sell
 
 = shop_man_sell
-SM: What do you need? I got {lampoil_not_bought:lamp oil{axe_not_bought: and }}{axe_not_bought:an axe}.
+{not lampoil_not_bought && not axe_not_bought: ->shop_man_soldout}
+SM: What do you need? I've got {lampoil_not_bought:lamp oil{axe_not_bought: and }}{axe_not_bought:an axe}.
 {lampoil_not_bought:
 + [Lamp oil]
     {not Item_coin:
@@ -95,7 +97,7 @@ SM: What do you need? I got {lampoil_not_bought:lamp oil{axe_not_bought: and }}{
     SM: I could trade it for a plant maybe.
     ->shop_man_sell
     }
-    PR: Never know when I need this, I'll buy it!
+    PR: This is always useful, I'll buy it!
      ~ axe_not_bought=false
     SM: Murderous choice! #Item-get:axe #Item-remove:plant
     -> shop_man_sell
@@ -109,5 +111,9 @@ SM: Good luck!
 ->END
 
 = shop_man_goodbye
-SM: Goodbye! {Item_lampoil:don't set anything on fire{Item_axe: and }}{Item_axe:don't cut yourself, or anyone}
+SM: Goodbye! {Item_lampoil:don't set anything on fire{Item_axe: and }}{Item_axe:don't cut yourself, or anyone else}
 -> END
+
+=shop_man_soldout
+SM: Hey, I'm all sold out but thanks for stopping by.
+->END

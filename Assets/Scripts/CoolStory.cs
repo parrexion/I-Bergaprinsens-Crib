@@ -43,11 +43,14 @@ public class CoolStory {
 	}
 
 	public void ShowPickupItem(ItemData item) {
+		DialogueController.itemMode = true;
+		DialogueController.fallBackSprite = item.itemIcon;
 		currentStory.variablesState["pickup"] = item.itemName;
 		currentStory.ChoosePathString($"{Area.system}.item_pickup");
 	}
 
 	public void SetPath(Area area, string path) {
+		DialogueController.itemMode = false;
 		currentStory.ChoosePathString($"{area}.{path}");
 	}
 

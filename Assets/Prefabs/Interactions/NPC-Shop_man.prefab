@@ -27,6 +27,11 @@ PrefabInstance:
       propertyPath: dialogueId
       value: shop_man
       objectReference: {fileID: 0}
+    - target: {fileID: 8964859549165437477, guid: 2fe67026973aa474fbcbad45cbeba5a5,
+        type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 6092268765102542733}
     - target: {fileID: 8964859549165437479, guid: 2fe67026973aa474fbcbad45cbeba5a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -184,3 +189,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea2a19183b2ab844688382d7d0ed2848, type: 3}
+--- !u!4 &6092268765102542733 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ea2a19183b2ab844688382d7d0ed2848,
+    type: 3}
+  m_PrefabInstance: {fileID: 5982661932914075750}
+  m_PrefabAsset: {fileID: 0}

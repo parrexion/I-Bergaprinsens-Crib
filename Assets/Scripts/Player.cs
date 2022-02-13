@@ -10,13 +10,19 @@ public class Player : MonoBehaviour {
 	public float horizontalSpeed = 3f;
 	public float verticalSpeed = 3f;
 	public float rotateSpeed = 90f;
+	public AudioClip footstepSfx;
 
 	private Interactable currentTarget;
+	private bool walking;
 
 
 	private void Update() {
 		if (DialogueController.runningDialogue || IngameSettings.inSettings) {
 			animatorController.SetFloat("Movespeed", 0f);
+			if (walking) {
+				walking = false;
+				AudioController.instance.StopFootstepSfx();
+			}
 			return;
 		}
 
@@ -31,6 +37,17 @@ public class Player : MonoBehaviour {
 		if (moveDirection.sqrMagnitude > 0f) {
 			Quaternion forwardRot = Quaternion.LookRotation(moveDirection);
 			playerAvatar.rotation = Quaternion.RotateTowards(playerAvatar.rotation, forwardRot, rotateSpeed * 60f * Time.deltaTime);
+
+			if (!walking) {
+				walking = true;
+				AudioController.instance.PlayFootstepSfx(footstepSfx);
+			}
+		}
+		else {
+			if (walking) {
+				walking = false;
+				AudioController.instance.StopFootstepSfx();
+			}
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {

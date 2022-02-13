@@ -30,6 +30,7 @@ public class Furnisher : MonoBehaviour {
 		DialogueController.instance.eventTriggered += OnDialogueTrigger;
 		DialogueController.instance.endDialogue += OnEndDialogue;
 		Inventory.instance.onFurninshingUpdated += UpdateFurnishing;
+		AudioController.instance.StopFootstepSfx();
 
 		if (startedGame) {
 			startedGame = false;

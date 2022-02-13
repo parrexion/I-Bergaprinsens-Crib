@@ -6,6 +6,8 @@ public class DialogueController : MonoBehaviour {
 
 	public static DialogueController instance = null;
 	public static bool runningDialogue = false;
+	public static bool itemMode = false;
+	public static Sprite fallBackSprite = null;
 
 	public System.Action startDialogue;
 	public System.Action endDialogue;

@@ -570,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneMusic: {fileID: 8300000, guid: f52c851afd21f9c45b04f0ff5224a9bb, type: 3}
+  ambienceMusic: {fileID: 0}
   spawnPoints: []
 --- !u!4 &198594073
 Transform:
@@ -619,8 +620,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -255.3, y: -123.8}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -259, y: -97}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &321206718
 MonoBehaviour:
@@ -641,7 +642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 64b2c53fe78cfe64d8c022b7893d64ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

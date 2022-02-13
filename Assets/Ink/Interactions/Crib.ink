@@ -29,7 +29,7 @@ PR: It's gonna be nice to finally get some rest after this.#Event:endgame
 
 = crib_bed
 PR: My favourite belonging is back at last. #Item-place:bed
-PR: Who doens't like to sleep right?
+PR: Who doesn't like to sleep right?
 -> crib_item_check
 
 = crib_carpet
@@ -38,7 +38,7 @@ PR: Especially when I lie on it and question my existence.
 -> crib_item_check
 
 = crib_chair
-PR: My lovely chair finally back. #Item-place:chair
+PR: My lovely chair is finally back. #Item-place:chair
 PR: I was starting to wonder where I would put all of my not-dirty-enough clothes.
 -> crib_item_check
 
@@ -50,7 +50,7 @@ PR: All my clothes are still there.
 
 = crib_lamp
 PR: Let there be light! #Item-place:lamp
-PR: Maybe I need another window for this place.
+PR: Maybe another window would make it even brighter.
 -> crib_item_check
 
 = crib_poster
@@ -60,11 +60,11 @@ PR: Oh well it's better than nothing.
 
 = crib_radio
 PR: Aaah my dearest posession. #Item-place:radio
-PR: My beasty Boombox finally back at its rightful owner.
+PR: My beasty Boombox finally back to its rightful owner.
 -> crib_item_check
 
 = crib_no_update
-PR: There are still a lot of stuff missing.
+PR: There is still a lot of stuff missing.
 ->crib_leave
 
 

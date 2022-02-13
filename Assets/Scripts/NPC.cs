@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NPC : Interactable {
-	
+
 	public Area area = Area.example_world;
 	public string dialogueId;
 	public Transform avatar;
+	public Animator animator;
 
 
 	public override void Interact(Transform player) {

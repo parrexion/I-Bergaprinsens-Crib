@@ -42,7 +42,7 @@ PR: Yeah, everything in my mountain crib is gone.
 LM: Well… that is unfortunate.
 LM: Haven’t your parents told you to lock the door?
 PR: Haven’t YOUR parents told you about breaking in anyway?
-PR: Whatever, you haven’t seen anything about it?
+PR: Whatever, you haven’t seen anything?
 LM: Of course not, I’ve been busy keeping the forest safe from outsiders.
 LM: You should know this boy!
 PR: Ugh ye work and all that.
@@ -65,7 +65,7 @@ LM: PISS OFF!
 ->END
 
 =lamp_man_keysgot
-PR: Yeah I found them down not far from the lake.
+PR: Yeah I found them over there not far from the lake.
 LM: Well would you look at that, useful for once. #Item-remove:keys
 PR: Wait what did you call me?
 LM: Here’s the lamp I promised now scram. #Item-get:lamp
@@ -78,7 +78,7 @@ LM: Hey who goes there?
 PR: …
 LM: Oh it’s you.
 LM: I Appreciate the help kid! Now that you’re here.
-LM: If you could get me some more lamp oil for my latern I would concider not cutting you down the next time you show up.
+LM: If you could get me some more lamp oil for my latern I would consider not cutting you down the next time you show up.
 PR: Yikes you could’ve asked nicely you stump.
 ~ lamp_man_visit3=true
 ->END
@@ -88,19 +88,19 @@ LM: Oi boy, that lamp oil for me?
 {Item_lampoil: ->lamp_man_lampoilgot}
 PR: Nope, but I did find this.
 PR: <i>Farts on him and runs away</i>
-LM: YOU LITTLE RAT!
+LM: YOU LITTLE BRAT!
 ->END
 
 =lamp_man_lampoilgot
 PR: SIR YES SIR!
 LM: Fantastic! I didn't think you had it in you. #Item-remove:lampoil
 PR: What can I say I'm full of surprises.
-LM: Who knows, now get lost before i find my axe.
+LM: Who knows, now get lost before I find my axe.
 PR: <i>Gulp</i>
-LM: Here you can take this flask of the finest homebrew in the land. #Item-get:flask
+LM: Here you can have this flask of the finest homebrew in the land. #Item-get:flask
 PR: Moonshine? Aww hell yeah.
 LM: And also this chair I bought. #Item-get:chair
-LM: It's not as good as the good ol' stumps.
+LM: It's not as good as the ol' stumps.
 PR: Oh um thanks I guess.
 LM: Now where did I put my axe?
 PR: Oh shit better get moving.
@@ -115,7 +115,7 @@ PR: What's up gramps?
 LM: Well I can't seem to find my axe, my good ol' mighty axe... <i>Sniff</i>
 PR: I would say that's a YOU problem old man.
 LM: Don't test your luck boy, my fists are still fit for a fight.
-PR: We both know I can run away from you before you even had the thought to do anything.
+PR: We both know I can just run away before you would even get off your fat ass.
 LM: Listen here you twat, take this plant and hope the shop got an axe in stock. #Item-get:plant
 LM: If you get me a new axe we can draw a big line over all this.
 LM: What do you say?
@@ -146,7 +146,7 @@ LM: Oh and one more thing.
 LM: Take this drawer I bought second hand. #Item-get:drawer
 PR: Ey cheers.
 PR: I need everything I can get after all.
-PR: Wait this one still got clothes in it.
+PR: Wait this one still has clothes in it.
 PR: Almost identical to what I like to wear.
 ~ lamp_man_visit6=true
 ->END

@@ -280,6 +280,7 @@ MonoBehaviour:
   horizontalSpeed: 12
   verticalSpeed: 9
   rotateSpeed: 10
+  footstepSfx: {fileID: 8300000, guid: 137baba2c6f743d4b8a07e8ea8010b89, type: 3}
 --- !u!143 &1502293903355185683
 CharacterController:
   m_ObjectHideFlags: 0

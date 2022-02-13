@@ -34,12 +34,13 @@ public class AudioController : MonoBehaviour {
 		voiceSource.volume = musicVolume;
 		voiceSource.loop = true;
 		sfxSource.volume = sfxVolume;
-		sfxSource.loop = false;
+		sfxSource.loop = true;
 	}
 
 	public void SetMusicVolume(float volume) {
 		musicVolume = volume;
 		bkgSource.volume = bkgSourceFade.volume = musicVolume;
+		voiceSource.volume = musicVolume;
 	}
 
 	//public void SetVoiceVolume(float volume) {
@@ -68,6 +69,15 @@ public class AudioController : MonoBehaviour {
 
 	public void StopAmbience() {
 		voiceSource.Stop();
+	}
+
+	public void PlayFootstepSfx(AudioClip sfx) {
+		sfxSource.clip = sfx;
+		sfxSource.Play();
+	}
+
+	public void StopFootstepSfx() {
+		sfxSource.Stop();
 	}
 
 	public void PlaySfx(AudioClip sfx) {

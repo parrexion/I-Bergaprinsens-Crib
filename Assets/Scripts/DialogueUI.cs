@@ -64,9 +64,16 @@ public class DialogueUI : MonoBehaviour {
 
 	private void DisplayLine(CharacterData speaker, string line) {
 		if (speaker == null) {
+			if (DialogueController.itemMode) {
+				portraitLeft.sprite = DialogueController.fallBackSprite;
+				portraitLeft.enabled = true;
+				portraitBackgroundLeft.color = Color.clear;
+			}
+			else {
+				portraitLeft.enabled = false;
+				portraitBackgroundLeft.color = Color.clear;
+			}
 			speakerNameLeft.text = "";
-			portraitLeft.sprite = null;
-			portraitBackgroundLeft.color = Color.white;
 			dialogueTextLeft.text = line;
 			leftView.SetActive(true);
 			rightView.SetActive(false);
@@ -85,6 +92,7 @@ public class DialogueUI : MonoBehaviour {
 			else {
 				speakerNameLeft.text = speaker.characterName;
 				portraitLeft.sprite = speaker.portrait;
+				portraitLeft.enabled = true;
 				portraitBackgroundLeft.color = speaker.standInColor;
 				dialogueTextLeft.text = line;
 				leftView.SetActive(true);
