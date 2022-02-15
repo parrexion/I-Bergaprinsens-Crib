@@ -3,7 +3,7 @@
 === area1 ===
 
 = area1_sign
-North to the Lake <br> East to the forest
+Field <br>  North to the Lake <br>  East to the Forest
 ->END
 
 = shop_man

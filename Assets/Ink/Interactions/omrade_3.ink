@@ -2,6 +2,14 @@
 
 === area3 ===
 
+= area3_sign
+Forest <br>  North to the Lake <br>  West to the Field
+-> END
+
+= area3_warning
+No littering in the forest! <br>We don't want any more old furniture.
+-> END
+
 = elf_girl
 VAR Item_flask=false
 VAR Item_shoe=false

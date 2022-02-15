@@ -2,6 +2,10 @@
 
 === area2 ===
 
+= area2_sign
+Lake <br>  West to the Field <br>  South to the Forest
+-> END
+
 = lamp_man
 VAR Item_keys=false
 VAR lamp_man_visit=false
